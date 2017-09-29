@@ -31,6 +31,21 @@
 		<div class="col-xs-18 col-sm-6 col-md-6" *ngFor="let punto of puntos">
 			<div class="thumbnail">
 				<img src="http://placehold.it/250x250/EEE">
+
+				<div class="caption">
+					<ngui-map
+							zoom="13"
+							center="37.775, -122.434"
+							(mapReady$)="onMapReady($event)"
+							(mapClick)="onMapClick($event)"
+							(idle)="onIdle($event)"
+							mapTypeId="satellite">
+						<marker *ngFor="let pos of positions"
+								[position]="pos"
+								(initialized$)="onMarkerInit($event)"></marker>
+					</ngui-map>
+
+				</div>
 				<div class="caption">
 					<h4>{{punto.nombre_punto_titulo}}</h4>
 					<p>{{punto.direccion_comentario}}</div>

@@ -2,7 +2,8 @@ import {Component,Directive, OnInit, HostListener, Input} from '@angular/core';
 import {Http} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { LoginComponent } from '../../components/login/login.component';
-//import { CeiboShare } from '../../components/botones-compartir/ng2-social-share';
+
+import { Router, NavigationEnd } from '@angular/router';
 import {PuntoService} from '../../_services/punto/punto.service';
 @Component({
 	selector: 'home',
@@ -117,5 +118,23 @@ export class HomeComponent implements OnInit {
 		this.infoMsg.type = type;
 		window.setTimeout(() => this.infoMsg.body = "", time);
 	}
+
+	// manejo de mapas
+
+    onMapReady(map) {
+        console.log('map', map);
+        console.log('markers', map.markers);  // to get all markers as an array
+    }
+    onIdle(event) {
+        console.log('map', event.target);
+    }
+    onMarkerInit(marker) {
+        console.log('marker', marker);
+    }
+    onMapClick(event) {
+        this.positions.push(event.latLng);
+        event.target.panTo(event.latLng);
+    }
+
 
 }

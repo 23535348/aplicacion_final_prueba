@@ -22,6 +22,8 @@ import { UserService} from "./_services/usuario/user.service";
 import {ValoracionCoordenadasService} from "../service/valoracion.coordenadas.service";
 import { CeiboShare } from 'ng2-social-share';
 
+//mapa instalacion
+import { NguiMapModule} from '@ngui/map';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
@@ -37,7 +39,9 @@ enableProdMode();
         routing,
         HttpModule,
         FormsModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key= AIzaSyBsfNPBgKI25fxsgHPcPfrc3fCJcJxLGFc '})
+    ],
     declarations: [
         AppComponent,
         AboutComponent,
