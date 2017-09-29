@@ -20,7 +20,7 @@ import { LoginService} from "./_services/login/login.service";
 import { PuntoService} from "./_services/punto/punto.service";
 import { UserService} from "./_services/usuario/user.service";
 import {ValoracionCoordenadasService} from "../service/valoracion.coordenadas.service";
-
+import { CeiboShare } from 'ng2-social-share';
 
 
 // used to create fake backend
@@ -43,7 +43,8 @@ enableProdMode();
         AboutComponent,
         HomeComponent,
         LoginComponent,
-        LoginRegistroComponent
+        LoginRegistroComponent,
+        CeiboShare
     ],
     providers: [
         CatService,

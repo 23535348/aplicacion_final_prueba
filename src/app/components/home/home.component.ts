@@ -2,16 +2,14 @@ import {Component,Directive, OnInit, HostListener, Input} from '@angular/core';
 import {Http} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { LoginComponent } from '../../components/login/login.component';
-import { CeiboShare } from '../../components/botones-compartir/ng2-social-share';
+//import { CeiboShare } from '../../components/botones-compartir/ng2-social-share';
 import {PuntoService} from '../../_services/punto/punto.service';
 @Component({
 	selector: 'home',
 	templateUrl: 'app/view/home/home.component.html'
 })
 
-@Directive({
-    selector: '[ceiboShare]'
-})
+
 export class HomeComponent implements OnInit {
 
     public repoUrl = 'https://github.com/Epotignano/ng2-social-share';
