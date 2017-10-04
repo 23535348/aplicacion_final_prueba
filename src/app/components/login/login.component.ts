@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 
 
 import {LoginService} from '../../_services/login/login.service';
+import {isNullOrUndefined} from "util";
 
 @Component({
-    selector: 'about',
+    selector: 'home',
     templateUrl: 'app/view/login/login.component.html'
 })
 
@@ -16,12 +17,15 @@ export class LoginComponent implements OnInit {
     private model: any = {};
     private loading = false;
     private returnUrl: string;
-    private username: string;
-    private password: string;
     private userForm: FormGroup;
+    private username = new FormControl("", Validators.required);
+    private password = new FormControl("", Validators.required);
+
     private usuarios = [];
      private isLogged:boolean;
 
+    token = null;
+    user = null;
     private infoMsg = { body: "", type: "info"};
     constructor(
         private http : Http,
@@ -44,30 +48,41 @@ export class LoginComponent implements OnInit {
     }
 
 
-
     newLogin() {
         this.loading = true;
        this.returnUrl= 'home';
-        this.loginService.newLogin(this.userForm.value)
-            .subscribe(
-                data => {
+       // this.userForm.value= 1;
 
-                        this.router.navigate([this.returnUrl]);
-                        this.sendInfoMsg("item deleted successfully.", "success");
+        this.loginService.newLogin(this.userForm.value).subscribe(
+                res => {
+                      //  this.sendInfoMsg("item deleted successfully.", "success");
+                    let collentionsUser = res.json();
+                   // alert(collentionsUser.length);
+                    if(collentionsUser === null){
+                        alert("no autenticado");
+                        this.loading = false;
+                       }else{
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', collentionsUser.nombre);
+                        localStorage.setItem('currentUserId', collentionsUser._id);
+                       // localStorage.setItem('token', JSON.stringify(this.token = user.token));
+                        alert("Bienvenido  "+collentionsUser.nombre);
+                       this.router.navigate([this.returnUrl]);
+                      //  this.loading = false;
+                    }
 
 
                 },
                 error => {
-                  //this.alertService.error(error);
-                //    this.loading = false;
+                   this.loading = false;
                 });
     }
 
 
     logout() {
-
         this.returnUrl = 'login';
-        this.loginService.logout();
+        localStorage.removeItem('currentUserId');
+        localStorage.removeItem('currentUser');
         this.router.navigate([this.returnUrl]);
     }
 

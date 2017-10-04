@@ -26,4 +26,5 @@ export class PuntoService {
         return this.http.delete("/punto/"+punto._id, this.options);
     }
 
+
 }

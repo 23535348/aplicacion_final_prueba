@@ -8,6 +8,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {LoginComponent} from './components/login/login.component';
 import {LoginRegistroComponent} from './components/login-registro/login.registro.component';
+import {PuntoComponent} from './components/punto/punto.component';
 
 //Rutas generales
 import { routing } from './app.routing';
@@ -19,7 +20,7 @@ import {CatService} from './_services/cat.service';
 import { LoginService} from "./_services/login/login.service";
 import { PuntoService} from "./_services/punto/punto.service";
 import { UserService} from "./_services/usuario/user.service";
-import {ValoracionCoordenadasService} from "../service/valoracion.coordenadas.service";
+import {ValoracionPuntoService} from "./_services/punto/valoracion.punto.service";
 import { CeiboShare } from 'ng2-social-share';
 
 //mapa instalacion
@@ -40,7 +41,7 @@ enableProdMode();
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
-        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key= AIzaSyBsfNPBgKI25fxsgHPcPfrc3fCJcJxLGFc '})
+        NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyDg1kQmRhYE8o8WcI0uWoyeZ1OQhNpv6xo'})
     ],
     declarations: [
         AppComponent,
@@ -48,7 +49,8 @@ enableProdMode();
         HomeComponent,
         LoginComponent,
         LoginRegistroComponent,
-        CeiboShare
+        CeiboShare,
+        PuntoComponent
     ],
     providers: [
         CatService,
@@ -57,6 +59,7 @@ enableProdMode();
         BrowserModule,
         LoginService,
         PuntoService,
+        ValoracionPuntoService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

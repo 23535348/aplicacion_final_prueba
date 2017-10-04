@@ -1,7 +1,6 @@
 var express = require('express');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
-
 var app = express();
 
 
@@ -192,39 +191,16 @@ db.once('open', function() {
 
 
     //Login api servidor
-// select all
-    app.get('/login/salir', function(req, res) {
-        user.find({}, function(err, docs) {
-            if(err) return console.error(err);
-            res.json(docs);
-        });
-    });
-
 // Autenticar usuarios
-  /*  app.post('/api/autenticacion', function(req, res) {
-
-        user.find({ "nombre" : 'deivis' ,
-                     "contrasenia" : '123'  }, function(err, docs) {
-            if(err) return console.error(err);
-            res.json(docs);
-        });
-    });*/
-
     app.post('/api/autenticacion', function(req, res) {
 
         var body = req.body;
-        user.find({ "nombre" : body.username ,
+        user.findOne({ "nombre" : body.username ,
                     "contrasenia" : body.password  }, function(err, docs) {
-           // if(err) return console.error(err);
-             if(docs.length === 1 ){
-                 res.json(docs);
-             }else{
-                 res.json({ error: 'error' });
-
-             }
-            //res.json(docs);
-
-        });
+            if(err) return console.error(err);
+            res.json(docs);
+            //console.log(docs);
+           });
     });
 
 
@@ -262,7 +238,7 @@ db.once('open', function() {
         })
     });
 
-    // update by id
+    //update by id
     app.put('/punto/:id', function(req, res) {
         coordM.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
             if(err) return console.error(err);
@@ -277,9 +253,62 @@ db.once('open', function() {
             res.sendStatus(200);
         });
     });
+    // Gestion de favoritos
+    // find by id
+    app.get('/favoritos/:id/:user', function(req, res) {
+        // usuario punto
+        coordMV.findOne({"coordenada_id" : req.params.id ,
+                         "usuario" :  req.params.user }, function (err, obj) {
+            if(err) return console.error(err);
+            res.json(obj);
+        })
+    });
+
+    app.get('/favorito', function(req, res) {
+        coordMV.find({}, function(err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
+        }).sort({coordenada_id:1});
+    });
+
+    app.post('/favorito/Add/:id/:user', function(req, res) {
+        var datosInsert={
+            coordenada_id :  req.params.id,
+            coordenada_nombre: req.body.nombre_punto_titulo,
+            usuario: req.params.user,
+            usuarioNombre: req.body.usuarioNombre
+
+        };
+       // console.log(datosInsert);
+        var obj = new coordMV(datosInsert);
+        obj.save(function(err, obj) {
+            if(err) return console.error(err);
+            res.status(200).json(obj);
+        });
 
 
+    });
 
+    app.put('/favorito/voto/:id', function(req, res) {
+        var contador_punto = req.body.favoritos + 1;
+        var datosUpdate={
+            _id :  req.params.id,
+            favoritos: contador_punto
+        };
+        coordM.findOneAndUpdate({_id: req.params.id}, datosUpdate, function (err) {
+            if(err) return console.error(err);
+            res.sendStatus(200);
+        })
+    });
+
+
+// select all
+    app.get('/cats', function(req, res) {
+        Cat.find({}, function(err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
+        });
+    });
 
 
     // select all
