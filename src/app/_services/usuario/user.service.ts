@@ -17,6 +17,14 @@ export class  UserService {
         return this.http.post("/usuario", JSON.stringify(usr), this.options);
     }
 
+    verificarEmail(usr) {
+        return this.http.post("/usuarios/email/"+usr.email , JSON.stringify(usr), this.options);
+    }
+
+    verificarUsuario(usr) {
+        return this.http.post('/usuarios/user/'+usr.nombre , JSON.stringify(usr), this.options);
+    }
+
     editUsuario(usr) {
         return this.http.put("/usuario/"+usr._id, JSON.stringify(usr), this.options);
     }

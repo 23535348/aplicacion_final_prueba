@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 
 import {LoginService} from '../../_services/login/login.service';
-import {isNullOrUndefined} from "util";
+
 
 @Component({
     selector: 'home',
@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('currentUser', collentionsUser.nombre);
                         localStorage.setItem('currentUserId', collentionsUser._id);
+                        localStorage.setItem('currentLogin', '1');
                        // localStorage.setItem('token', JSON.stringify(this.token = user.token));
                         alert("Bienvenido  "+collentionsUser.nombre);
                        this.router.navigate([this.returnUrl]);
@@ -80,9 +81,8 @@ export class LoginComponent implements OnInit {
 
 
     logout() {
+        this.loginService.logout();
         this.returnUrl = 'login';
-        localStorage.removeItem('currentUserId');
-        localStorage.removeItem('currentUser');
         this.router.navigate([this.returnUrl]);
     }
 

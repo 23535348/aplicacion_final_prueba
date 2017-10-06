@@ -1,7 +1,7 @@
-import {Component,Directive, OnInit, HostListener, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import { LoginComponent } from '../../components/login/login.component';
+import {LoginService} from '../../_services/login/login.service';
 import { Router, NavigationEnd } from '@angular/router';
 import {PuntoService} from '../../_services/punto/punto.service';
 import {ValoracionPuntoService} from '../../_services/punto/valoracion.punto.service';
@@ -35,17 +35,17 @@ export class HomeComponent implements OnInit {
     private direccion_comentario = new FormControl("", Validators.required);
     private returnUrl: string;
 	private infoMsg = { body: "", type: "info"};
-    private loginComponent : LoginComponent;
 	constructor(private http: Http,
 				private puntoService : PuntoService,
                 private router: Router,
 				private valorarionPuntoService : ValoracionPuntoService,
-				private formBuilder: FormBuilder) {	}
+				private formBuilder: FormBuilder,
+                private loginService : LoginService
+    ) {	}
 
 	ngOnInit() {
 
         this.getPuntos();
-
 		this.addPuntoForm = this.formBuilder.group({
             nombre_punto_titulo: this.nombre_punto_titulo,
             punto_x: this.punto_x,
@@ -171,6 +171,11 @@ export class HomeComponent implements OnInit {
 
     }
 
+    mapaIr(id_mapa){
+        this.returnUrl = 'mapa/'+id_mapa;
+        this.router.navigate([this.returnUrl]);
+    }
+
     getPuntosFavoritos(punto) {
         this.valorarionPuntoService.getPuntoFavoritos(punto).subscribe(
             data => this.puntosFavoritos = data,
@@ -180,7 +185,7 @@ export class HomeComponent implements OnInit {
     }
 
     logout() {
-	    this.loginComponent.logout();
+	    this.loginService.logout();
     }
 
 	sendInfoMsg(body, type, time = 3000) {

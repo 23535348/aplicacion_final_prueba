@@ -45,6 +45,22 @@ db.once('open', function() {
         });
     });
 
+    app.post('/usuarios/email/:email', function(req, res) {
+        user.findOne({ email: req.params.email }, function(err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
+            //console.log(docs);
+        });
+    });
+
+    app.post('/usuarios/user/:usuariodato', function(req, res) {
+        user.findOne({ nombre: req.params.usuariodato }, function(err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
+            //console.log(docs);
+        });
+    });
+
 // count all
     app.get('/usuarios/count', function(req, res) {
         user.count(function(err, count) {
@@ -298,6 +314,15 @@ db.once('open', function() {
         coordM.findOneAndUpdate({_id: req.params.id}, datosUpdate, function (err) {
             if(err) return console.error(err);
             res.sendStatus(200);
+        })
+    });
+
+    // mapas
+    // find
+    app.get('/mapaServicio/:id', function(req, res) {
+        coordM.find({_id: req.params.id}, function (err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
         })
     });
 

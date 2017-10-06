@@ -9,6 +9,7 @@ import {AboutComponent} from './components/about/about.component';
 import {LoginComponent} from './components/login/login.component';
 import {LoginRegistroComponent} from './components/login-registro/login.registro.component';
 import {PuntoComponent} from './components/punto/punto.component';
+import {MapaComponent} from './components/mapa/mapa.component';
 
 //Rutas generales
 import { routing } from './app.routing';
@@ -21,6 +22,7 @@ import { LoginService} from "./_services/login/login.service";
 import { PuntoService} from "./_services/punto/punto.service";
 import { UserService} from "./_services/usuario/user.service";
 import {ValoracionPuntoService} from "./_services/punto/valoracion.punto.service";
+import {MapaService} from "./_services/mapa/mapa.service";
 import { CeiboShare } from 'ng2-social-share';
 
 //mapa instalacion
@@ -50,7 +52,8 @@ enableProdMode();
         LoginComponent,
         LoginRegistroComponent,
         CeiboShare,
-        PuntoComponent
+        PuntoComponent,
+        MapaComponent
     ],
     providers: [
         CatService,
@@ -60,6 +63,7 @@ enableProdMode();
         LoginService,
         PuntoService,
         ValoracionPuntoService,
+        MapaService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

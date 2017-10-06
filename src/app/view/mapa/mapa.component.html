@@ -1,0 +1,70 @@
+<div class="card" *ngIf="isLoading">
+	<h5 class="card-header">Cargando..</h5>
+	<div class="card-block text-xs-center">
+		<i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+	</div>
+</div>
+
+<h5 class="card-header">Puntos de Interes ({{mapasPunto.length}})
+</h5>
+<hr>
+<div class="container" *ngIf="mapasPunto.length === 0">
+	<div class="row">
+		<div class="col-xs-18 col-sm-12 col-md-12 text-center">
+			<div class="row ">
+
+					<h4>No hay puntos Registrados</h4>
+						</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+<div class="">
+	<div class="row">
+
+		<div class="col-xs-18 col-sm-10  col-lg-10 col-md-10" *ngFor="let mapa of mapasPunto">
+			<div class="thumbnail">
+				<div class="row">
+				<div class="col-xs-18 col-sm-12 col-md-12 col-lg-12">
+					<ngui-map
+							zoom="13"
+					></ngui-map>
+
+				</div>
+				</div>
+					<div class="row">
+				<div class="col-xs-18 col-sm-4 col-md-4 col-lg-4">
+					<img class="img-circle img-responsive" src="http://placehold.it/250x250/EEE">
+
+				</div>
+
+				<div class="col-xs-18 col-sm-8 col-md-8 col-lg-8">
+					<div class="caption">
+					<h4>{{mapa.nombre_punto_titulo}}</h4>
+					<p>{{mapa.direccion_comentario}} </p>
+					<p>Usuario:  {{mapa.usuarioNombre}} </p>
+					<p>Favoritos:  {{mapa.favoritos}} </p>
+					</div>
+				</div>
+					</div>
+						<div class="row">
+				<div class="col-xs-18 col-sm-12 col-md-12 col-lg-12">
+					<h4>Compartir </h4>
+					<button ceiboShare  [facebook]="{u: repoUrl}">Facebook</button>
+					<button ceiboShare  [linkedIn]="{url:repoUrl}">Linkedin</button>
+					<button ceiboShare  [googlePlus]="{url:repoUrl}">Google Plus</button>
+					<button ceiboShare  [twitter]="{url:repoUrl, text: mapa.direccion_comentario , hashtags:mapa.nombre_punto_titulo}">Twitter</button>
+					<button ceiboShare [pinterest]="{url:repoUrl, media: imageUrl, description: mapa.direccion_comentario}">Pinterest</button>
+
+				</div>
+						</div>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
