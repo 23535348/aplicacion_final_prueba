@@ -210,6 +210,11 @@ export class MapaGestionComponent implements OnInit {
             error => console.log(error)
         );
     }
+    rankingVoto(valor) {
+        this.ranking = valor;
+        alert('Su voto es: '+this.ranking);
+    }
+
     // manejo de mapas
     onMapReady(map) {
         console.log('map', map);
@@ -228,10 +233,6 @@ export class MapaGestionComponent implements OnInit {
     cancelEditing() {
         this.returnUrl = 'home';
         this.router.navigate([this.returnUrl]);
-    }
-    rankingVoto(valor) {
-        this.ranking = valor;
-        alert('Su voto es: '+this.ranking);
     }
 
 }

@@ -7,6 +7,7 @@ import {PuntoService} from '../../_services/punto/punto.service';
 import {ValoracionPuntoService} from '../../_services/punto/valoracion.punto.service';
 @Component({
 	selector: 'home',
+    styleUrls:  ['app/view/mapa/mapa.css'],
 	templateUrl: 'app/view/home/home.component.html'
 })
 
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
 	private currentUser = localStorage.getItem('currentUser');
     private currentUserId = localStorage.getItem('currentUserId');
 	private punto = {};
+	private  ranking: number =1;
 	private isEditing: number = 1;
     private isAdd = false;
 
@@ -54,6 +56,7 @@ export class HomeComponent implements OnInit {
             usuarioNombre : this.usuarioNombre,
             favoritos: this.favoritos ,
             foto_ranking: this.foto_ranking,
+            ranking : this.ranking,
             direccion_comentario: this.direccion_comentario
 
 		});

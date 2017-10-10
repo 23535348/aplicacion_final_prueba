@@ -55,17 +55,58 @@
 					<p>{{mapa.direccion_comentario}} </p>
 					<p>Usuario:  {{mapa.usuarioNombre}} </p>
 					<p>Favoritos:  {{mapa.favoritos}} </p>
+						<p>Categoria:  {{mapa.categoria}} </p>
+						<div class="caption">
+							<h4>Ranking </h4>
+
+							<div  *ngIf="mapa.ranking == 1"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="mapa.ranking == 2"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="mapa.ranking == 3"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"  class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"    class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="mapa.ranking == 4"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="mapa.ranking == 5"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   class="consultas-ranking" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+
+						</div>
 					</div>
 				</div>
 					</div>
 						<div class="row">
 				<div class="col-xs-18 col-sm-12 col-md-12 col-lg-12">
 					<h4>Compartir </h4>
-					<button ceiboShare  [facebook]="{u: repoUrl}">Facebook</button>
-					<button ceiboShare  [linkedIn]="{url:repoUrl}">Linkedin</button>
-					<button ceiboShare  [googlePlus]="{url:repoUrl}">Google Plus</button>
-					<button ceiboShare  [twitter]="{url:repoUrl, text: mapa.direccion_comentario , hashtags:mapa.nombre_punto_titulo}">Twitter</button>
-					<button ceiboShare [pinterest]="{url:repoUrl, media: imageUrl, description: mapa.direccion_comentario}">Pinterest</button>
+					<button   class="btn btn-xs btn-primary" ceiboShare  [facebook]="{u: repoUrl}">Facebook</button>
+					<button  class="btn btn-xs bg-silver" ceiboShare  [linkedIn]="{url:repoUrl}">Linkedin</button>
+					<button  class="btn btn-xs btn-danger" ceiboShare  [googlePlus]="{url:repoUrl}">Google Plus</button>
+					<button  class="btn btn-xs btn-info" ceiboShare   [twitter]="{url:repoUrl, text: mapa.direccion_comentario , hashtags:mapa.nombre_punto_titulo}">Twitter</button>
+					<button  class="btn btn-xs bg-fuchsia" ceiboShare [pinterest]="{url:repoUrl, media: imageUrl, description: mapa.direccion_comentario}">Pinterest</button>
 
 				</div>
 						</div>

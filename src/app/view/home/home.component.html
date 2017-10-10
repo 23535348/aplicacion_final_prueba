@@ -7,8 +7,6 @@
 
 <h5 class="card-header">Puntos de Interes ({{puntos.length}})</h5>
 <br>
-<button  class="btn btn-info btn-xs" role="button" (click)="enableAdd()"> Agregar Punto <i class="glyphicon glyphicon-plus-sign"></i></button>
-
 <hr>
 <div class="container" *ngIf="puntos.length === 0">
 	<div class="row">
@@ -35,9 +33,49 @@
 					<p>{{punto.direccion_comentario}} </p>
 					<p>Usuario:  {{punto.usuarioNombre}} </p>
 					<p>Favoritos:  {{punto.favoritos}} </p>
+					<p>Categoria:  {{punto.categoria}} </p>
 
 
 
+				</div>
+				<div class="caption">
+					<h4>Ranking </h4>
+
+					<div  *ngIf="punto.ranking == 1"  class="ec-stars-wrapper-consulta">
+						<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
+					<div  *ngIf="punto.ranking == 2"  class="ec-stars-wrapper-consulta">
+						<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
+					<div  *ngIf="punto.ranking == 3"  class="ec-stars-wrapper-consulta">
+						<a href="javascript:void(0)"  class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"    class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
+					<div  *ngIf="punto.ranking == 4"  class="ec-stars-wrapper-consulta">
+						<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
+					<div  *ngIf="punto.ranking == 5"  class="ec-stars-wrapper-consulta">
+						<a href="javascript:void(0)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a href="javascript:void(0)"   class="consultas-ranking" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
 
 				</div>
 				<div class="caption">
@@ -145,6 +183,50 @@
 						</div>
 						<div class="form-group">
 							<input class="form-control" type="text" name="direccion_comentario"  [(ngModel)]="punto.direccion_comentario"  formControlName="direccion_comentario" placeholder="Direccion Comentario">
+						</div>
+
+						<div class="caption">
+							<h4>Ranking </h4>
+
+							<div  *ngIf="punto.ranking == 1"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)" (click)="rankingVoto(1)"   class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)" (click)="rankingVoto(2)"   data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)" (click)="rankingVoto(3)" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)" (click)="rankingVoto(4)" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)" (click)="rankingVoto(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="punto.ranking == 2"   class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"  (click)="rankingVoto(1)" class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(2)"class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(3)" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(4)" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="punto.ranking == 3"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"  (click)="rankingVoto(1)" class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(2)" class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(3)" class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(4)" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+
+							<div  *ngIf="punto.ranking == 4"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"   (click)="rankingVoto(1)"  class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(2)" class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(3)" class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(4)" class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"   (click)="rankingVoto(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<div  *ngIf="punto.ranking == 5"  class="ec-stars-wrapper-consulta">
+								<a href="javascript:void(0)"  (click)="rankingVoto(1)"  class="consultas-ranking"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(2)" class="consultas-ranking" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(3)" class="consultas-ranking" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(4)"class="consultas-ranking" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+								<a href="javascript:void(0)"  (click)="rankingVoto(5)" class="consultas-ranking" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+							</div>
+							<input class="form-control" type="hidden"  [(ngModel)]="punto.ranking" name="ranking" formControlName="ranking" placeholder="ranking">
+
+
 						</div>
 					<div class="caption">
 						<h4>Acciones</h4>
