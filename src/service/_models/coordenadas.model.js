@@ -9,6 +9,7 @@ var coordenadasSchema = mongoose.Schema({
     favoritos: {type: Number},
     foto_ranking: {type: String},
     direccion_comentario: {type: String},
+    categoria: {type: String},
     creado: { type: Date, default: Date.now }
 });
 var Coordenadas = mongoose.model('puntos', coordenadasSchema);

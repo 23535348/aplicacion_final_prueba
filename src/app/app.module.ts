@@ -27,6 +27,7 @@ import { UserService} from "./_services/usuario/user.service";
 import {ValoracionPuntoService} from "./_services/punto/valoracion.punto.service";
 import {MapaService} from "./_services/mapa/mapa.service";
 import { CeiboShare } from 'ng2-social-share';
+import {CategoriaService} from "./_services/categorias/categoria.service";
 
 //mapa instalacion
 import { NguiMapModule} from '@ngui/map';
@@ -68,6 +69,7 @@ enableProdMode();
         PuntoService,
         ValoracionPuntoService,
         MapaService,
+        CategoriaService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

@@ -18,7 +18,8 @@
 					>
 
 						         <marker
-										 *ngFor="let pos of positions"
+
+										  *ngFor="let pos of positions"
 										 [position]="pos"
 										 (initialized$)="onMarkerInit($event)"
 
@@ -33,8 +34,8 @@
 					<br>
 					hola {{var_latitud}}
 					<form class="form-inline" [formGroup]="addMapaForm" (ngSubmit)="addPuntoVerificar()" style="text-align:center">
-								<input class="form-control" type="hidden"  [(ngModel)]="var_latitud" name="punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
-								<input class="form-control" type="hidden"  [(ngModel)]="var_longitud" name="punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
+								<input class="form-control" type="hidden"  id="punto_latitude" [(ngModel)]="var_latitud" name="punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
+								<input class="form-control" type="hidden"  id="punto_longitude" [(ngModel)]="var_longitud" name="punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
 								<button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-floppy-o"></i> Crear Punto</button>
 								<button class="btn btn-xs btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancelar</button>
 					</form>
@@ -52,6 +53,9 @@
 
 		<div class="card" *ngIf="isGestion === 2">
 			<h5 class="card-header">Agregar Puntos</h5>
+			<br>
+			<button  class="btn btn-info btn-xs" role="button" (click)="enableAddForm()"> Agregar Categoria <i class="glyphicon glyphicon-plus-sign"></i></button>
+
 			<div class="card-block">
 				<form class="form-inline" [formGroup]="addPuntoForm" (ngSubmit)="addPunto()" style="text-align:center">
 					<div class="row" *ngIf="isGestion === 2">
@@ -76,6 +80,33 @@
 									<div class="form-group">
 										<input class="form-control" type="text" name="direccion_comentario" formControlName="direccion_comentario" placeholder="Direccion Comentario">
 									</div>
+									<div class="form-group">
+										<div   *ngIf="categoriasNueva === 0">
+										<select name="categoria"  class="form-control">
+
+											<option *ngFor="let categoriaR of categorias"   value="{{categoriaR.nombre}}">
+												{{categoriaR.nombre}}
+											</option>
+										</select>
+										</div>
+										<div  *ngIf="categoriasNueva === 1">
+										<input class="form-control" type="text"  name="categoria" formControlName="categoria" placeholder="Categoria">
+										</div>
+									</div>
+
+									<div class="form-group">
+									<div class="
+									    ec-stars-wrapper">
+										Ranking
+										<a href="#"  (click)="rankingVoto(1)"  data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+										<a href="#"  (click)="rankingVoto(2)" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+										<a href="#"  (click)="rankingVoto(3)"  data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+										<a href="#"  (click)="rankingVoto(4)"  data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+										<a href="#"  (click)="rankingVoto(5)" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+										<input class="form-control" type="hidden"  [(ngModel)]="ranking" name="ranking" formControlName="ranking" placeholder="ranking">
+									</div>
+									</div>
+
 									<div class="caption">
 										<h4>Acciones</h4>
 										<button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-floppy-o"></i> Registrar</button>
