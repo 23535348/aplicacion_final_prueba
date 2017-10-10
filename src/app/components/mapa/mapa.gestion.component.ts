@@ -91,14 +91,14 @@ export class MapaGestionComponent implements OnInit {
         };
         this.markerMap = {};
         var onSuccess = function(position) {
-          alert('Latitude: '          + position.coords.latitude          + '\n' +
+         /* alert('Latitude: '          + position.coords.latitude          + '\n' +
                 'Longitude: '         + position.coords.longitude         + '\n' +
                 'Altitude: '          + position.coords.altitude          + '\n' +
                 'Accuracy: '          + position.coords.accuracy          + '\n' +
                 'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
                 'Heading: '           + position.coords.heading           + '\n' +
                 'Speed: '             + position.coords.speed             + '\n' +
-                'Timestamp: '         + position.timestamp                + '\n');
+                'Timestamp: '         + position.timestamp                + '\n');*/
 
             var pos = { latitude : position.coords.latitude, longitude: position.coords.longitude};
             var myLatlng = position.coords.latitude+','+ position.coords.longitude;
@@ -231,6 +231,7 @@ export class MapaGestionComponent implements OnInit {
     }
     rankingVoto(valor) {
         this.ranking = valor;
+        alert('Su voto es: '+this.ranking);
     }
 
 }

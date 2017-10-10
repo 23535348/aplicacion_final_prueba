@@ -8,6 +8,7 @@ var coordenadasSchema = mongoose.Schema({
     usuarioNombre: {type: String},
     favoritos: {type: Number},
     foto_ranking: {type: String},
+    ranking: {type: String},
     direccion_comentario: {type: String},
     categoria: {type: String},
     creado: { type: Date, default: Date.now }
