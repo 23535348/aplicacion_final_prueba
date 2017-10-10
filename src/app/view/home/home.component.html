@@ -57,7 +57,7 @@
 				</div>
 				<div class="caption">
 					<h4>Compartir </h4>
-					<button  class="btn btn-xs btn-primary" ceiboShare  [facebook]="{u: repoUrl}">Facebook</button>
+					<button   class="btn btn-xs btn-primary" ceiboShare  [facebook]="{u: repoUrl}">Facebook</button>
 					<button  class="btn btn-xs bg-silver" ceiboShare  [linkedIn]="{url:repoUrl}">Linkedin</button>
 					<button  class="btn btn-xs btn-danger" ceiboShare  [googlePlus]="{url:repoUrl}">Google Plus</button>
 					<button  class="btn btn-xs btn-info" ceiboShare   [twitter]="{url:repoUrl, text: punto.direccion_comentario , hashtags:punto.nombre_punto_titulo}">Twitter</button>
@@ -87,10 +87,10 @@
 								<input class="form-control" type="text" name="nombre_punto_titulo" formControlName="nombre_punto_titulo" placeholder="Nombre del punto">
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" name="punto_x" formControlName="punto_x" placeholder="PuntoX" min="0">
+								<input class="form-control" type="number" name="punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" name="punto_y" formControlName="punto_y" placeholder="PuntoY" step="any" min="0">
+								<input class="form-control" type="number" name="punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
 							</div>
 							<div class="form-group">
 								<input class="form-control" type="hidden" [(ngModel)]="currentUserId" name="usuario" formControlName="usuario" placeholder="Usuario">
@@ -131,10 +131,10 @@
 							<input class="form-control" type="text" name="nombre_punto_titulo" [(ngModel)]="punto.nombre_punto_titulo" formControlName="nombre_punto_titulo" placeholder="Nombre del punto">
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="number" name="punto_x" [(ngModel)]="punto.punto_x" formControlName="punto_x" placeholder="PuntoX" min="0">
+							<input class="form-control" type="number" name="punto_latitude" [(ngModel)]="punto.punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
 						</div>
 						<div class="form-group">
-							<input class="form-control" type="number" name="punto_y"  [(ngModel)]="punto.punto_y" formControlName="punto_y" placeholder="PuntoY" step="any" min="0">
+							<input class="form-control" type="number" name="punto_longitude"  [(ngModel)]="punto.punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
 						</div>
 						<div class="form-group">
 							<input class="form-control" type="hidden" [(ngModel)]="currentUserId" name="usuario" formControlName="usuario" placeholder="Usuario">

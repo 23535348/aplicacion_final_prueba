@@ -1,0 +1,94 @@
+<h5 class="card-header">Puntos de Interes
+</h5>
+<hr>
+
+
+<div class="">
+	<div class="row">
+
+		<div *ngIf="isGestion === 1" class="col-xs-18 col-sm-10  col-lg-10 col-md-10" >
+			<div class="thumbnail">
+				<div class="row">
+				<div class="col-xs-18 col-sm-12 col-md-12 col-lg-12">
+					<ngui-map
+							[options]="mapOptions"
+							(mapReady$)="onMapReady($event)"
+							(mapClick)="onMapClick($event)"
+							(idle)="onIdle($event)"
+					>
+
+						         <marker
+										 *ngFor="let pos of positions"
+										 [position]="pos"
+										 (initialized$)="onMarkerInit($event)"
+
+
+								></marker>
+					</ngui-map>
+
+				</div>
+				</div>
+					<div class="row">
+				<div class="col-xs-18 col-sm-4 col-md-4 col-lg-4">
+					<br>
+					hola {{var_latitud}}
+					<form class="form-inline" [formGroup]="addMapaForm" (ngSubmit)="addPuntoVerificar()" style="text-align:center">
+								<input class="form-control" type="hidden"  [(ngModel)]="var_latitud" name="punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
+								<input class="form-control" type="hidden"  [(ngModel)]="var_longitud" name="punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
+								<button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-floppy-o"></i> Crear Punto</button>
+								<button class="btn btn-xs btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancelar</button>
+					</form>
+				</div>
+
+				<div class="col-xs-18 col-sm-8 col-md-8 col-lg-8">
+
+				</div>
+					</div>
+
+			</div>
+		</div>
+
+
+
+		<div class="card" *ngIf="isGestion === 2">
+			<h5 class="card-header">Agregar Puntos</h5>
+			<div class="card-block">
+				<form class="form-inline" [formGroup]="addPuntoForm" (ngSubmit)="addPunto()" style="text-align:center">
+					<div class="row" *ngIf="isGestion === 2">
+						<div class="col-xs-18 col-sm-10 col-md-10 col-lg-10" >
+							<div class="thumbnail">
+								<img src="http://placehold.it/250x250/EEE">
+								<div class="caption">
+									<div class="form-group">
+										<input class="form-control" type="text" name="nombre_punto_titulo" formControlName="nombre_punto_titulo" placeholder="Nombre del punto">
+									</div>
+									<input class="form-control" type="hidden"  [(ngModel)]="var_latitud" name="punto_latitude" formControlName="punto_latitude" placeholder="Latitud" min="0">
+									<input class="form-control" type="hidden"  [(ngModel)]="var_longitud" name="punto_longitude" formControlName="punto_longitude" placeholder="Longitud" step="any" min="0">
+
+									<div class="form-group">
+										<input class="form-control" type="hidden" [(ngModel)]="currentUserId" name="usuario" formControlName="usuario" placeholder="Usuario">
+										<input class="form-control" type="hidden" [(ngModel)]="currentUser" name="usuarioNombre" formControlName="usuarioNombre" placeholder="usuarioNombre">
+
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="text" name="foto_ranking" formControlName="foto_ranking" placeholder="Foto Ranking">
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="text" name="direccion_comentario" formControlName="direccion_comentario" placeholder="Direccion Comentario">
+									</div>
+									<div class="caption">
+										<h4>Acciones</h4>
+										<button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-floppy-o"></i> Registrar</button>
+										<button class="btn btn-xs btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancelar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</div>

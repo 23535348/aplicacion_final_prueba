@@ -28,6 +28,9 @@
 						<li class="nav-item" *ngIf="currentLogin === '1'" routerLinkActive="active">
 							<a class="nav-link" [routerLink]="['/about']"><i class="fa fa-info-circle"></i> About</a>
 						</li>
+						<li  *ngIf="currentLogin === '1'" class="" routerLinkActive="linksWithHrefs">
+							<a class="nav-link" [routerLink]="['/puntoGestion']"><i class="fa fa-info-circle"></i> Agregar Punto</a>
+						</li>
 
 						<li  *ngIf="currentLogin === '1'" class="" routerLinkActive="linksWithHrefs">
 							<a class="nav-link" [routerLink]="['/favorito']"><i class="fa fa-info-circle"></i> Favorito</a>

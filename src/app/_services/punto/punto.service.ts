@@ -18,6 +18,10 @@ export class PuntoService {
         return this.http.post("/punto", JSON.stringify(punto), this.options);
     }
 
+    addPuntoVerificar(punto) {
+        return this.http.post("/punto/verificar", JSON.stringify(punto), this.options);
+    }
+
     editPunto(punto) {
         return this.http.put("/punto/"+punto._id, JSON.stringify(punto), this.options);
     }

@@ -222,6 +222,20 @@ db.once('open', function() {
 
     //Dashboard inicial
     // select all
+    app.post('/punto/verificar', function(req, res) {
+
+        var body = req.body;
+        coordM.findOne({ "punto_latitude" : body.punto_latitude ,
+            "punto_longitude" : body.punto_longitude  }, function(err, docs) {
+            if(err) return console.error(err);
+            res.json(docs);
+            //console.log(docs);
+        });
+
+
+    });
+
+
     app.get('/puntos', function(req, res) {
         coordM.find({}, function(err, docs) {
             if(err) return console.error(err);

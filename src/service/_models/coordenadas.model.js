@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var coordenadasSchema = mongoose.Schema({
     nombre_punto_titulo: {type: String},
-    punto_x: {type: String},
-    punto_y: {type: String},
+    punto_latitude: {type: String},
+    punto_longitude: {type: String},
     usuario: {type: String},
     usuarioNombre: {type: String},
     favoritos: {type: Number},

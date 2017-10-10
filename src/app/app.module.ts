@@ -4,12 +4,15 @@ import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
+//Componentes generales internos (modulos)
 import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {LoginComponent} from './components/login/login.component';
 import {LoginRegistroComponent} from './components/login-registro/login.registro.component';
 import {PuntoComponent} from './components/punto/punto.component';
 import {MapaComponent} from './components/mapa/mapa.component';
+import { MapaGestionComponent } from './components/mapa/mapa.gestion.component';
+
 
 //Rutas generales
 import { routing } from './app.routing';
@@ -53,7 +56,8 @@ enableProdMode();
         LoginRegistroComponent,
         CeiboShare,
         PuntoComponent,
-        MapaComponent
+        MapaComponent,
+        MapaGestionComponent
     ],
     providers: [
         CatService,

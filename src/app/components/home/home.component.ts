@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
 
     private addPuntoForm: FormGroup;
 	private nombre_punto_titulo = new FormControl("", Validators.required);
-    private punto_x = new FormControl("", Validators.required);
-    private punto_y = new FormControl("", Validators.required);
+    private punto_latitude = new FormControl("", Validators.required);
+    private punto_longitude = new FormControl("", Validators.required);
     private usuario = new FormControl("", Validators.required);
     private usuarioNombre = new FormControl("", Validators.required);
     private favoritos : number = 0;
@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
         this.getPuntos();
 		this.addPuntoForm = this.formBuilder.group({
             nombre_punto_titulo: this.nombre_punto_titulo,
-            punto_x: this.punto_x,
-            punto_y: this.punto_y,
+            punto_latitude: this.punto_latitude,
+            punto_longitude: this.punto_longitude,
             usuario: this.usuario,
             usuarioNombre : this.usuarioNombre,
             favoritos: this.favoritos ,
@@ -64,19 +64,6 @@ export class HomeComponent implements OnInit {
             data => this.puntos = data,
             error => console.log(error),
             () => this.isLoading = false
-        );
-    }
-
-    addPunto() {
-        this.puntoService.addPunto(this.addPuntoForm.value).subscribe(
-            res => {
-                var newPunto = res.json();
-                this.puntos.push(newPunto);
-                this.addPuntoForm.reset();
-                this.isEditing = 1;
-                this.sendInfoMsg("Se agrego el punto Correctamente.", "success");
-            },
-            error => console.log(error)
         );
     }
 
@@ -184,32 +171,12 @@ export class HomeComponent implements OnInit {
         );
     }
 
-    logout() {
-	    this.loginService.logout();
-    }
-
 	sendInfoMsg(body, type, time = 3000) {
 		this.infoMsg.body = body;
 		this.infoMsg.type = type;
 		window.setTimeout(() => this.infoMsg.body = "", time);
 	}
 
-	// manejo de mapas
-    /*
-    onMapReady(map) {
-        console.log('map', map);
-        console.log('markers', map.markers);  // to get all markers as an array
-    }
-    onIdle(event) {
-        console.log('map', event.target);
-    }
-    onMarkerInit(marker) {
-        console.log('marker', marker);
-    }
-    onMapClick(event) {
-        this.positions.push(event.latLng);
-        event.target.panTo(event.latLng);
-    }
-*/
+
 
 }
