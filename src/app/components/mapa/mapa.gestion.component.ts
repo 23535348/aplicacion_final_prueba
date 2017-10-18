@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Directive, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import { RouterLinkWithHref , ActivatedRoute , Params  } from '@angular/router';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
@@ -7,11 +7,15 @@ import {PuntoService} from '../../_services/punto/punto.service';
 import {MapaService} from '../../_services/mapa/mapa.service';
 import {CategoriaService} from '../../_services/categorias/categoria.service';
 import { Router } from '@angular/router';
+import {UploaderFileDirective} from '../directive/carga_de_archivo/uploader.file.directive';
+
+
 
 @Component({
 	selector: 'mapa',
     styleUrls:  ['app/view/mapa/mapa.css'],
-	templateUrl: 'app/view/mapa/mapa.gestion.component.html'
+	templateUrl: 'app/view/mapa/mapa.gestion.component.html',
+
 })
 
 
