@@ -9,8 +9,6 @@ import {MapaComponent} from "./components/mapa/mapa.component";
 import {MapaGestionComponent} from "./components/mapa/mapa.gestion.component";
 
 
-import { AuthGuard } from './_guards/index';
-
 
 
 const appRoutes: Routes = [

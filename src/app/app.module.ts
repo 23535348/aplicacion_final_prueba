@@ -16,8 +16,7 @@ import { MapaGestionComponent } from './components/mapa/mapa.gestion.component';
 
 //Rutas generales
 import { routing } from './app.routing';
-//Para nevegacion de rutas hijas
-import { AuthGuard } from './_guards/index';
+
 
 //apis
 import {CatService} from './_services/cat.service';
@@ -63,7 +62,6 @@ enableProdMode();
     providers: [
         CatService,
         UserService,
-        AuthGuard,
         BrowserModule,
         LoginService,
         PuntoService,
